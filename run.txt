@@ -1,0 +1,1 @@
+docker run --cap-add=sys_admin --security-opt label:disable -it cdougan/nfs-server:v1
