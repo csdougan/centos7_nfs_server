@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: nfs
+  name: nfs-server
+  labels:
+    app: nfs-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-server
+  template:
+    metadata:
+      namespace: nfs
+      labels:
+        app: nfs-server
+    spec:
+      containers:
+      - name: cd-nfs-server
+        image: cdougan/nfs-server:v1
+        securityContext:
+          capabilities:
+            add:
+             - SYS_ADMIN
+        ports:
+         - containerPort: 2049
+           protocol: TCP
+         - containerPort: 111
+           protocol: UDP

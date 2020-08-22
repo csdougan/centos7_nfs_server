@@ -5,7 +5,10 @@ USER root
 
 COPY start_nfs.sh /root/start_nfs.sh
 
-RUN yum install -y nfs-utils nfs-utils-lib && chmod u+x /root/start_nfs.sh
+RUN yum install -y nfs-utils nfs-utils-lib && \
+    chmod u+x /root/start_nfs.sh && \
+    mkdir -p /nfs
+
 
 EXPOSE 111/udp 2049/tcp
 
