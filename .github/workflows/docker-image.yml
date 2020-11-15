@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set image name
-      run: IMAGE_NAME=csdougan-centos7-nfs
+      run: echo 'IMAGE_NAME=csdougan-centos7-nfs; >> $GITHUB_ENV
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${IMAGE_NAME}
     - name: Log into registry
